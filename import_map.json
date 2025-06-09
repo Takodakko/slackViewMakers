@@ -1,0 +1,13 @@
+{
+    "imports": {
+        "std/assert": "jsr:@std/assert@1",
+        "blockMakers/": "./block_makers/",
+        "elementMakers/": "./element_makers/",
+        "objectMakers/": "./object_makers/",
+        "richTextMakers/": "./rich_text_makers/",
+        "viewMakers/": "./view_makers/",
+        "utils/": "./utils/",
+        "customTypes/": "./custom_types/",
+        "denoSlackSDK/": "https://deno.land/x/deno_slack_sdk@2.15.0/"
+    }
+}
