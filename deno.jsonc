@@ -9,7 +9,8 @@
   "tasks": {
     "dev": "deno run --watch main.ts",
     "watch": "deno test --watch",
-    "cover": "deno test --clean --coverage && deno coverage --ignore=custom_types/"
+    "cover": "deno test --clean --coverage && deno coverage --ignore=custom_types/",
+    "detail": "deno test --clean --coverage && deno coverage --detailed --ignore=custom_types/"
   },
   "importMap": "import_map.json",
   "test": {
