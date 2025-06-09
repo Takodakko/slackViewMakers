@@ -1,13 +1,15 @@
 {
   "$schema": "https://deno.land/x/deno/cli/schemas/config-file.v1.json",
   "fmt": {
-    "include": ["block_makers", "custom_types", "element_makers"]
+    "include": ["block_makers", "custom_types", "element_makers", "object_makers", "rich_text_makers", "utils", "view_makers", "mod.ts"]
   },
   "lint": {
-    "include": ["block_makers", "custom_types", "element_makers"]
+    "include": ["block_makers", "custom_types", "element_makers", "object_makers", "rich_text_makers", "utils", "view_makers", "mod.ts"]
   },
   "tasks": {
-    "dev": "deno run --watch main.ts"
+    "dev": "deno run --watch main.ts",
+    "watch": "deno test --watch",
+    "cover": "deno test --clean --coverage && deno coverage --ignore=custom_types/"
   },
   "importMap": "import_map.json",
   "test": {
