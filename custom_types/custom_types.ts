@@ -26,9 +26,9 @@ export interface IFileObject {
 
 /** Filter Object: All optional, but at least one must be used. */
 export interface IFilterObject {
-    include?: string[];
-    exclude_external_shared_channels?: boolean;
-    exclude_bot_users?: boolean;
+  include?: string[];
+  exclude_external_shared_channels?: boolean;
+  exclude_bot_users?: boolean;
 }
 
 /** Mrkdwn Text Object */
@@ -75,13 +75,13 @@ export interface IButtonElement {
 
 /** Channels Select Element: Modals / Messages > Section Block / Actions Block / Input Block */
 export interface IChannelsSelectElement {
-    type: "channels_select";
-    action_id?: string;
-    initial_channel?: string;
-    confirm?: IConfirmObject;
-    response_url_enabled?: boolean;
-    focus_on_load?: boolean;
-    placeholder?: IPlainTextObject;
+  type: "channels_select";
+  action_id?: string;
+  initial_channel?: string;
+  confirm?: IConfirmObject;
+  response_url_enabled?: boolean;
+  focus_on_load?: boolean;
+  placeholder?: IPlainTextObject;
 }
 
 /** Checkboxes Element: Modals / Messages > Section Block / Actions Block / Input Block */
@@ -96,15 +96,15 @@ export interface ICheckboxesElement {
 
 /** Conversations Select Element: Modals / Messages > Section Block / Actions Block / Input Block */
 export interface IConversationsSelectElement {
-    type: "conversations_select";
-    action_id?: string;
-    initial_conversation?: string;
-    default_to_current_conversation?: boolean;
-    confirm?: IConfirmObject;
-    response_url_enabled?: boolean;
-    filter?: IFilterObject;
-    focus_on_load?: boolean;
-    placeholder?: IPlainTextObject;
+  type: "conversations_select";
+  action_id?: string;
+  initial_conversation?: string;
+  default_to_current_conversation?: boolean;
+  confirm?: IConfirmObject;
+  response_url_enabled?: boolean;
+  filter?: IFilterObject;
+  focus_on_load?: boolean;
+  placeholder?: IPlainTextObject;
 }
 
 /** Date Picker Element: Modals / Messages > Section Block / Actions Block / Input Block */
@@ -138,13 +138,13 @@ export interface IEmailTextInputElement {
 
 /** External Select Element: Modals / Messages > Section Block / Actions Block / Input Block */
 export interface IExternalSelectElement {
-    type: "external_select";
-    action_id?: string;
-    initial_option?: IOptionObject;
-    min_query_length?: number;
-    confirm?: IConfirmObject;
-    focus_on_load?: boolean;
-    placeholder?: IPlainTextObject;
+  type: "external_select";
+  action_id?: string;
+  initial_option?: IOptionObject;
+  min_query_length?: number;
+  confirm?: IConfirmObject;
+  focus_on_load?: boolean;
+  placeholder?: IPlainTextObject;
 }
 
 /** File Input Element: Modals > Input Block */
@@ -165,38 +165,38 @@ export interface IImageElement {
 
 /** Multi Channels Select Element: Modals / Messages > Section Block / Actions Block / Input Block */
 export interface IMultiChannelsSelectElement {
-    type: "multi_channels_select";
-    action_id?: string;
-    initial_channels?: string[];
-    confirm?: IConfirmObject;
-    max_selected_items?: number;
-    focus_on_load?: boolean;
-    placeholder?: IPlainTextObject;
+  type: "multi_channels_select";
+  action_id?: string;
+  initial_channels?: string[];
+  confirm?: IConfirmObject;
+  max_selected_items?: number;
+  focus_on_load?: boolean;
+  placeholder?: IPlainTextObject;
 }
 
 /** Multi Conversation Select Element: Modals / Messages > Section Block / Actions Block / Input Block */
 export interface IMultiConversationsSelectElement {
-    type: "multi_conversations_select";
-    action_id?: string;
-    initial_conversations?: string[];
-    default_to_current_conversation?: boolean;
-    confirm?: IConfirmObject;
-    max_selected_items?: number;
-    filter?: IFilterObject;
-    focus_on_load?: boolean;
-    placeholder?: IPlainTextObject;
+  type: "multi_conversations_select";
+  action_id?: string;
+  initial_conversations?: string[];
+  default_to_current_conversation?: boolean;
+  confirm?: IConfirmObject;
+  max_selected_items?: number;
+  filter?: IFilterObject;
+  focus_on_load?: boolean;
+  placeholder?: IPlainTextObject;
 }
 
 /** Multi External Select Element: Modals / Messages > Section Block / Actions Block / Input Block */
 export interface IMultiExternalSelectElement {
-    type: "multi_external_select";
-    action_id?: string;
-    min_query_length?: number;
-    initial_options?: IOptionObject[];
-    confirm?: IConfirmObject;
-    max_selected_items?: number;
-    focus_on_load?: boolean;
-    placeholder?: IPlainTextObject;
+  type: "multi_external_select";
+  action_id?: string;
+  min_query_length?: number;
+  initial_options?: IOptionObject[];
+  confirm?: IConfirmObject;
+  max_selected_items?: number;
+  focus_on_load?: boolean;
+  placeholder?: IPlainTextObject;
 }
 
 /** Multi Static Select Element: Modals / Messages > Section Block / Actions Block / Input Block */

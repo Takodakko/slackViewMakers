@@ -1,0 +1,1 @@
+This is a collection of typings for Slack UI, and functions to make the JSON for that UI.
