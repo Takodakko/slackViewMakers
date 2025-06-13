@@ -36,6 +36,8 @@ import {
 import { removeUnneededKeys, textObjectOrUndefined } from "utils/utils.ts";
 import { makePlainTextObject } from "objectMakers/object_makers.ts";
 
+const digits = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+
 /** Make Button Element */
 export const makeButtonElement = (
   text: string,
@@ -149,7 +151,7 @@ export const makeDatePickerElement = (
           throw new Error("Enter an inital date in the format YYYY-MM-DD");
         }
       } else {
-        if (typeof parseInt(init[i], 10) !== "number") {
+        if (!digits.includes(init[i])) {
           throw new Error("Enter an inital date in the format YYYY-MM-DD");
         }
       }
@@ -399,8 +401,12 @@ export const makeNumberInputElement = (
   disp?: IDispatchActionConfigObject,
   focus?: boolean,
 ) => {
-  if (init && typeof parseInt(init, 10) !== "number") {
-    throw new Error("Enter a number for the initial value");
+  if (init) {
+    for (let i = 0; i < init.length; i++) {
+      if (!digits.includes(init[i]) && init[i] !== ".") {
+        throw new Error("Enter a number for the initial value");
+      }
+    }
   }
   const numberInput: INumberInputElement = {
     type: "number_input",
@@ -569,7 +575,7 @@ export const makeTimePickerElement = (
       if (i === 2 && init[i] !== ":") {
         throw new Error("Format initial time as HH:mm");
       }
-      if (i !== 2 && typeof parseInt(init[i], 10) !== "number") {
+      if (i !== 2 && !digits.includes(init[i])) {
         throw new Error("Format initial time as HH:mm");
       }
     }
