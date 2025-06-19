@@ -1,6 +1,7 @@
 import {
   buttonStyles,
   IConfirmObject,
+  IConversationFilterObject,
   IDispatchActionConfigObject,
   IMrkdwnTextObject,
   IOptionGroupObject,
@@ -101,6 +102,17 @@ export const makeConfirmObject = (
   removeUnneededKeys(conf);
   return conf;
 };
+
+/** Makes a Conversation Filter Object */
+export const makeConversationFilterObject = (include?: string[], exclude_ex?: boolean, exclude_bot?: boolean) => {
+  const conv: IConversationFilterObject = {
+    include: include,
+    exclude_bot_users: exclude_bot,
+    exclude_external_shared_channels: exclude_ex
+  }
+  removeUnneededKeys(conv);
+  return conv;
+}
 
 /** Makes a Dispatch Config Object */
 export const makeDispatchConfigObject = (
