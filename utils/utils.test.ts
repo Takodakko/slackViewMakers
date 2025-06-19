@@ -1,4 +1,4 @@
-import { IPlainTextObject } from "customTypes/custom_types.ts";
+import type { IPlainTextObject } from "customTypes/custom_types.ts";
 import { removeUnneededKeys, textObjectOrUndefined } from "./utils.ts";
 import {assertEquals} from "jsr:@std/assert";
 

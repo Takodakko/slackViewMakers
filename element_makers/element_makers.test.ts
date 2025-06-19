@@ -26,7 +26,7 @@ import {
   makeURLInputElement,
   makeWorkflowButtonElement,
 } from "./element_makers.ts";
-import {
+import type {
   IButtonElement,
   IChannelsSelectElement,
   ICheckboxesElement,

@@ -16,7 +16,7 @@ import {
   makeButtonElement,
   makePlainTextInputElement,
 } from "elementMakers/element_makers.ts";
-import {
+import type {
   IActionsBlock,
   IContextBlock,
   IDividerBlock,
