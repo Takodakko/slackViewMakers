@@ -1,6 +1,7 @@
-import { assertEquals } from "std/assert/assert_equals.ts";
+import {assertEquals} from "jsr:@std/assert";
 import {
   makeConfirmObject,
+  makeConversationFilterObject,
   makeDispatchConfigObject,
   makeMrkdwnTextObject,
   makeOptionGroupsArray,
@@ -12,6 +13,7 @@ import {
 } from "./object_makers.ts";
 import {
   IConfirmObject,
+  IConversationFilterObject,
   IDispatchActionConfigObject,
   IMrkdwnTextObject,
   IOptionGroupObject,
@@ -167,6 +169,16 @@ Deno.test("makeConfirmObject makes a Confirm Object", () => {
 
   assertEquals(result, expected);
 });
+
+Deno.test("makeConversationFilterObject makes a Conversation Filter Object", () => {
+  const result = makeConversationFilterObject(["channel"], true);
+  const expected: IConversationFilterObject = {
+    include: ["channel"],
+    exclude_external_shared_channels: true
+  };
+
+  assertEquals(result, expected);
+})
 
 Deno.test("makeDispatchConfigObject makes a Confirm Object", () => {
   const result = makeDispatchConfigObject(["on_character_entered"]);

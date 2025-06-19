@@ -1,14 +1,16 @@
-import { assertEquals } from "std/assert/assert_equals.ts";
+import {assertEquals} from "jsr:@std/assert";
 import {
   makeActionsBlock,
   makeContextBlock,
   makeDividerBlock,
   makeFileBlock,
   makeHeaderBlock,
+  makeImageBlock,
   makeInputBlock,
   makeMarkdownBlock,
   makeRichTextBlock,
   makeSectionBlock,
+  makeVideoBlock,
 } from "./block_makers.ts";
 import {
   makeButtonElement,
@@ -20,10 +22,12 @@ import {
   IDividerBlock,
   IFileBlock,
   IHeaderBlock,
+  IImageBlock,
   IInputBlock,
   IMarkdownBlock,
   IRichTextBlock,
   ISectionBlock,
+  IVideoBlock,
 } from "customTypes/custom_types.ts";
 import { makePlainTextObject } from "objectMakers/object_makers.ts";
 import {
@@ -32,7 +36,7 @@ import {
 } from "richTextMakers/rich_text_makers.ts";
 
 Deno.test("makeActionsBlock makes an Actions Block", () => {
-  const result = makeActionsBlock("id", [makeButtonElement("text", "id")]);
+  const result = makeActionsBlock([makeButtonElement("text", "id")], "id");
   const expected: IActionsBlock = {
     type: "actions",
     block_id: "id",
@@ -43,7 +47,7 @@ Deno.test("makeActionsBlock makes an Actions Block", () => {
 });
 
 Deno.test("makeContextBlock makes a Context Block", () => {
-  const result = makeContextBlock("id", [makePlainTextObject("text")]);
+  const result = makeContextBlock([makePlainTextObject("text")], "id");
   const expected: IContextBlock = {
     type: "context",
     block_id: "id",
@@ -64,7 +68,7 @@ Deno.test("makeDividerBlock makes a Divider Block", () => {
 });
 
 Deno.test("makeFileBlock makes a File Block", () => {
-  const result = makeFileBlock("id", "exid", "source");
+  const result = makeFileBlock("exid", "source", "id");
   const expected: IFileBlock = {
     type: "file",
     block_id: "id",
@@ -76,7 +80,7 @@ Deno.test("makeFileBlock makes a File Block", () => {
 });
 
 Deno.test("makeHeaderBlock makes a Header Block", () => {
-  const result = makeHeaderBlock("id", "text");
+  const result = makeHeaderBlock("text", "id");
   const expected: IHeaderBlock = {
     type: "header",
     block_id: "id",
@@ -89,11 +93,22 @@ Deno.test("makeHeaderBlock makes a Header Block", () => {
   assertEquals(result, expected);
 });
 
+Deno.test("makeImageBlock makes an Image Block", () => {
+  const result = makeImageBlock("alt", "id");
+  const expected: IImageBlock = {
+    type: "image",
+    alt_text: "alt",
+    block_id: "id"
+  };
+
+  assertEquals(result, expected);
+});
+
 Deno.test("makeInputBlock makes an Input Block", () => {
   const result = makeInputBlock(
-    "id",
     "label",
     makePlainTextInputElement("id"),
+    "id",
     false,
   );
   const expected: IInputBlock = {
@@ -111,7 +126,7 @@ Deno.test("makeInputBlock makes an Input Block", () => {
 });
 
 Deno.test("makeMarkdownBlock makes a Markdown Block", () => {
-  const result = makeMarkdownBlock("id", "text");
+  const result = makeMarkdownBlock("text", "id");
   const expected: IMarkdownBlock = {
     type: "markdown",
     block_id: "id",
@@ -122,9 +137,10 @@ Deno.test("makeMarkdownBlock makes a Markdown Block", () => {
 });
 
 Deno.test("makeRichTextBlock makes a Rich Text Block", () => {
-  const result = makeRichTextBlock("id", [
+  const result = makeRichTextBlock([
     makeRichTextSection([makeRichTextText("text")]),
-  ]);
+  ],
+  "id");
   const expected: IRichTextBlock = {
     type: "rich_text",
     block_id: "id",
@@ -172,26 +188,14 @@ Deno.test("makeSectionBlock makes a Section Block", () => {
   assertEquals(result3, expected3);
 });
 
-Deno.test("makeSectionBlock throws errors if textType isn't supplied with text, or if both text and fields are undefined", () => {
-  let result1: Error = new Error("");
-  try {
-    makeSectionBlock("id");
-  } catch (e) {
-    if (e instanceof Error) {
-      result1 = e;
-    }
-  }
+Deno.test("makeVideoBlock makes a Video Block", () => {
+  const result = makeVideoBlock("alt", "author", "id");
+  const expected: IVideoBlock = {
+    type: "video",
+    alt_text: "alt",
+    author_name: "author",
+    block_id: "id"
+  };
 
-  assertEquals(result1, new Error("Need to provide text or fields"));
-
-  let result2: Error = new Error("");
-  try {
-    makeSectionBlock("id", "text");
-  } catch (e) {
-    if (e instanceof Error) {
-      result2 = e;
-    }
-  }
-
-  assertEquals(result2, new Error("Must provide text type when using text"));
-});
+  assertEquals(result, expected);
+})

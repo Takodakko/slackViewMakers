@@ -1,4 +1,3 @@
-import { BlockElement } from "denoSlackSDK/functions/interactivity/block_kit_types.ts";
 
 export type buttonStyles = "primary" | "danger" | "default";
 
@@ -11,6 +10,13 @@ export interface IConfirmObject {
   confirm: IPlainTextObject;
   deny: IPlainTextObject;
   style?: buttonStyles;
+}
+
+/** Conversation Filter Object */
+export interface IConversationFilterObject {
+  include?: string[];
+  exclude_external_shared_channels?: boolean;
+  exclude_bot_users?: boolean;
 }
 
 /** Dispatch Action Config Object */
@@ -525,38 +531,43 @@ export type allRichTextBlockElements =
   | IRichTextQuote;
 
 /////////// ------------------ Block Types -----------------------
+
+export interface ISlackBlock {
+  block_id?: string;
+}
+
 /** Actions Block */
-export interface IActionsBlock extends BlockElement {
+export interface IActionsBlock extends ISlackBlock {
   type: "actions";
   elements: Array<allActionsElements>;
 }
 
 /** Context Block */
-export interface IContextBlock extends BlockElement {
+export interface IContextBlock extends ISlackBlock {
   type: "context";
   elements: Array<allContextElements>;
 }
 
 /** Divider Block */
-export interface IDividerBlock extends BlockElement {
+export interface IDividerBlock extends ISlackBlock {
   type: "divider";
 }
 
 /** File Block */
-export interface IFileBlock extends BlockElement {
+export interface IFileBlock extends ISlackBlock {
   type: "file";
   external_id: string;
   source: string;
 }
 
 /** Header Block */
-export interface IHeaderBlock extends BlockElement {
+export interface IHeaderBlock extends ISlackBlock {
   type: "header";
   text: IPlainTextObject;
 }
 
 /** Image Block */
-export interface IImageBlock extends BlockElement {
+export interface IImageBlock extends ISlackBlock {
   type: "image";
   alt_text: string;
   image_url?: string;
@@ -565,7 +576,7 @@ export interface IImageBlock extends BlockElement {
 }
 
 /** Input Block */
-export interface IInputBlock extends BlockElement {
+export interface IInputBlock extends ISlackBlock {
   type: "input";
   label: IPlainTextObject;
   element: allInputElements;
@@ -575,19 +586,19 @@ export interface IInputBlock extends BlockElement {
 }
 
 /** Markdown Block */
-export interface IMarkdownBlock extends BlockElement {
+export interface IMarkdownBlock extends ISlackBlock {
   type: "markdown";
   text: string;
 }
 
 /** Rich Text Block */
-export interface IRichTextBlock extends BlockElement {
+export interface IRichTextBlock extends ISlackBlock {
   type: "rich_text";
   elements: Array<allRichTextBlockElements>;
 }
 
 /** Section Block */
-export interface ISectionBlock extends BlockElement {
+export interface ISectionBlock extends ISlackBlock {
   type: "section";
   text?: ITextObject;
   fields?: Array<ITextObject>;
@@ -596,7 +607,7 @@ export interface ISectionBlock extends BlockElement {
 }
 
 /** Video Block */
-export interface IVideoBlock extends BlockElement {
+export interface IVideoBlock extends ISlackBlock {
   type: "video";
   alt_text: string;
   author_name?: string;
@@ -608,6 +619,8 @@ export interface IVideoBlock extends BlockElement {
   thumbnail_url?: string;
   video_url?: string;
 }
+
+export type allBlockTypes = IActionsBlock | IContextBlock | IDividerBlock | IFileBlock | IHeaderBlock | IImageBlock | IInputBlock | IMarkdownBlock | IRichTextBlock | ISectionBlock | IVideoBlock;
 
 //////////// ----------------- Slack View Types ----------------------
 /** Slack Modal */
@@ -622,5 +635,5 @@ export interface ISlackModal {
   title: IPlainTextObject;
   submit?: IPlainTextObject;
   close?: IPlainTextObject;
-  blocks: BlockElement[];
+  blocks: allBlockTypes[];
 }

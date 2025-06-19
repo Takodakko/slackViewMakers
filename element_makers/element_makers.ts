@@ -36,8 +36,6 @@ import {
 import { removeUnneededKeys, textObjectOrUndefined } from "utils/utils.ts";
 import { makePlainTextObject } from "objectMakers/object_makers.ts";
 
-const digits = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-
 /** Make Button Element */
 export const makeButtonElement = (
   text: string,
@@ -92,9 +90,7 @@ export const makeCheckboxesElement = (
   confirm?: IConfirmObject,
   focus?: boolean,
 ) => {
-  if (options.length > 10) {
-    throw new Error("Only up to 10 options are allowed in a Checkbox");
-  }
+  
   const check: ICheckboxesElement = {
     type: "checkboxes",
     options: options,
@@ -141,22 +137,7 @@ export const makeDatePickerElement = (
   confirm?: IConfirmObject,
   focus?: boolean,
 ) => {
-  if (init && init.length !== 10) {
-    throw new Error("Enter an inital date in the format YYYY-MM-DD");
-  }
-  if (init) {
-    for (let i = 0; i < init.length; i++) {
-      if (i === 4 || i === 7) {
-        if (init[i] !== "-") {
-          throw new Error("Enter an inital date in the format YYYY-MM-DD");
-        }
-      } else {
-        if (!digits.includes(init[i])) {
-          throw new Error("Enter an inital date in the format YYYY-MM-DD");
-        }
-      }
-    }
-  }
+  
   const datepick: IDatePickerElement = {
     type: "datepicker",
     action_id: id,
@@ -176,9 +157,7 @@ export const makeDateTimePickerElement = (
   confirm?: IConfirmObject,
   focus?: boolean,
 ) => {
-  if (init && init.toString().length !== 10) {
-    throw new Error("Enter a UNIX timestamp of 10 digits for the initial time");
-  }
+  
   const dateTime: IDateTimePickerElement = {
     type: "datetimepicker",
     action_id: id,
@@ -347,12 +326,7 @@ export const makeMultiStaticSelectElement = (
   max?: number,
   focus?: boolean,
 ) => {
-  if (options && groups) {
-    throw new Error("Only use options OR option groups");
-  }
-  if (!options && !groups) {
-    throw new Error("Must use options OR option groups");
-  }
+  
   const select: IMultiStaticSelectElement = {
     type: "multi_static_select",
     action_id: id,
@@ -401,13 +375,7 @@ export const makeNumberInputElement = (
   disp?: IDispatchActionConfigObject,
   focus?: boolean,
 ) => {
-  if (init) {
-    for (let i = 0; i < init.length; i++) {
-      if (!digits.includes(init[i]) && init[i] !== ".") {
-        throw new Error("Enter a number for the initial value");
-      }
-    }
-  }
+  
   const numberInput: INumberInputElement = {
     type: "number_input",
     is_decimal_allowed: decimal,
@@ -429,9 +397,7 @@ export const makeOverflowElement = (
   id?: string,
   confirm?: IConfirmObject,
 ) => {
-  if (options.length > 5 || options.length === 0) {
-    throw new Error("Can only have 1-5 options in an Overflow Menu");
-  }
+  
   const overflow: IOverflowElement = {
     type: "overflow",
     options: options,
@@ -518,12 +484,7 @@ export const makeSingleStaticSelectElement = (
   confirm?: IConfirmObject,
   focus?: boolean,
 ) => {
-  if (options && groups) {
-    throw new Error("Only use options OR option groups");
-  }
-  if (!options && !groups) {
-    throw new Error("Must use options OR option groups");
-  }
+  
   const staticSelect: IStaticSelectElement = {
     type: "static_select",
     action_id: id,
@@ -567,19 +528,7 @@ export const makeTimePickerElement = (
   focus?: boolean,
   timezone?: string,
 ) => {
-  if (init && init.length !== 5) {
-    throw new Error("Format initial time as HH:mm");
-  }
-  if (init) {
-    for (let i = 0; i < init.length; i++) {
-      if (i === 2 && init[i] !== ":") {
-        throw new Error("Format initial time as HH:mm");
-      }
-      if (i !== 2 && !digits.includes(init[i])) {
-        throw new Error("Format initial time as HH:mm");
-      }
-    }
-  }
+  
   const time: ITimePickerElement = {
     type: "timepicker",
     action_id: id,

@@ -1,12 +1,11 @@
-import { BlockElement } from "denoSlackSDK/functions/interactivity/block_kit_types.ts";
-import { ISlackModal } from "customTypes/custom_types.ts";
+import { allBlockTypes, ISlackModal } from "customTypes/custom_types.ts";
 import { makePlainTextObject } from "objectMakers/object_makers.ts";
 import { removeUnneededKeys, textObjectOrUndefined } from "utils/utils.ts";
 
 /** Make a Slack Modal */
 export const makeModal = (
   title: string,
-  blocks: BlockElement[],
+  blocks: allBlockTypes[],
   id?: string,
   close?: string,
   submit?: string,

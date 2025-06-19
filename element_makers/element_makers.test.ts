@@ -1,4 +1,4 @@
-import { assertEquals } from "std/assert/assert_equals.ts";
+import {assertEquals} from "jsr:@std/assert";
 import {
   makeButtonElement,
   makeChannelsSelectElement,
@@ -95,36 +95,6 @@ Deno.test("makeCheckboxesElement makes a Checkboxes Element", () => {
   assertEquals(result, expected);
 });
 
-Deno.test("makeCheckboxesElement throws an error if the array of options is more than 10", () => {
-  let result = new Error("");
-  try {
-    makeCheckboxesElement(
-      makeOptionObjectsArraySimple([
-        "1",
-        "2",
-        "3",
-        "4",
-        "5",
-        "6",
-        "7",
-        "8",
-        "9",
-        "10",
-        "11",
-      ]),
-    );
-  } catch (e) {
-    if (e instanceof Error) {
-      result = e;
-    }
-  }
-
-  assertEquals(
-    result,
-    new Error("Only up to 10 options are allowed in a Checkbox"),
-  );
-});
-
 Deno.test("makeConversationsSelectElement makes a Conversations Select Element", () => {
   const result = makeConversationsSelectElement("id");
   const expected: IConversationsSelectElement = {
@@ -145,38 +115,6 @@ Deno.test("makeDatePickerElement makes a Date Picker Element", () => {
   assertEquals(result, expected);
 });
 
-Deno.test("makeDatePickerElement throws Errors if proper Date format is not used for initial value", () => {
-  let result1 = new Error("");
-  let result2 = new Error("");
-  let result3 = new Error("");
-  const expected = new Error("Enter an inital date in the format YYYY-MM-DD");
-  try {
-    makeDatePickerElement("id", undefined, "2020-12");
-  } catch (e) {
-    if (e instanceof Error) {
-      result1 = e;
-    }
-  }
-  try {
-    makeDatePickerElement("id", undefined, "2020/12/30");
-  } catch (e) {
-    if (e instanceof Error) {
-      result2 = e;
-    }
-  }
-  try {
-    makeDatePickerElement("id", undefined, "June-te-th");
-  } catch (e) {
-    if (e instanceof Error) {
-      result3 = e;
-    }
-  }
-
-  assertEquals(result1, expected);
-  assertEquals(result2, expected);
-  assertEquals(result3, expected);
-});
-
 Deno.test("makeDateTimePickerElement makes a Date Time Picker Element", () => {
   const result = makeDateTimePickerElement("id");
   const expected: IDateTimePickerElement = {
@@ -185,22 +123,6 @@ Deno.test("makeDateTimePickerElement makes a Date Time Picker Element", () => {
   };
 
   assertEquals(result, expected);
-});
-
-Deno.test("makeDateTimePickerElement throws an Error if the wrong format is used for the initial value", () => {
-  let result = new Error("");
-  try {
-    makeDateTimePickerElement("id", 1234);
-  } catch (e) {
-    if (e instanceof Error) {
-      result = e;
-    }
-  }
-
-  assertEquals(
-    result,
-    new Error("Enter a UNIX timestamp of 10 digits for the initial time"),
-  );
 });
 
 Deno.test("makeEmailInputElement makes an Email Input Element", () => {
@@ -307,31 +229,6 @@ Deno.test("makeMultiStaticSelectElement makes a Static Multi-Select Element", ()
   assertEquals(result2, expected2);
 });
 
-Deno.test("makeMultiStaticSelectElement throws an Error if neither options nor option_groups are provided, or if both are", () => {
-  let result1 = new Error("");
-  let result2 = new Error("");
-  try {
-    makeMultiStaticSelectElement(
-      makeOptionObjectsArraySimple(["1"]),
-      makeOptionGroupsArray([["label", makeOptionObjectsArraySimple(["1"])]]),
-    );
-  } catch (e) {
-    if (e instanceof Error) {
-      result1 = e;
-    }
-  }
-  try {
-    makeMultiStaticSelectElement();
-  } catch (e) {
-    if (e instanceof Error) {
-      result2 = e;
-    }
-  }
-
-  assertEquals(result1, new Error("Only use options OR option groups"));
-  assertEquals(result2, new Error("Must use options OR option groups"));
-});
-
 Deno.test("makeMultiUserSelectElement makes a User Multi-Select Element", () => {
   const result = makeMultiUserSelectElement("id");
   const expected: IMultiUsersSelectElement = {
@@ -354,19 +251,6 @@ Deno.test("makeNumberInputElement makes a Number Input Element", () => {
   assertEquals(result, expected);
 });
 
-Deno.test("makeNumberInputElement throws an Error if a number string isn't used as the initial value", () => {
-  let result = new Error("");
-  try {
-    makeNumberInputElement(false, "id", undefined, "a");
-  } catch (e) {
-    if (e instanceof Error) {
-      result = e;
-    }
-  }
-
-  assertEquals(result, new Error("Enter a number for the initial value"));
-});
-
 Deno.test("makeOverflowElement makes an Overflow Element", () => {
   const result = makeOverflowElement(makeOptionObjectsArraySimple(["1"]), "id");
   const expected: IOverflowElement = {
@@ -376,36 +260,6 @@ Deno.test("makeOverflowElement makes an Overflow Element", () => {
   };
 
   assertEquals(result, expected);
-});
-
-Deno.test("makeOverflowElement throws an Error if the options array is more than 5 length or empty", () => {
-  let result1 = new Error("");
-  let result2 = new Error("");
-  try {
-    makeOverflowElement(
-      makeOptionObjectsArraySimple(["1", "2", "3", "4", "5", "6"]),
-    );
-  } catch (e) {
-    if (e instanceof Error) {
-      result1 = e;
-    }
-  }
-  try {
-    makeOverflowElement(makeOptionObjectsArraySimple([]));
-  } catch (e) {
-    if (e instanceof Error) {
-      result2 = e;
-    }
-  }
-
-  assertEquals(
-    result1,
-    new Error("Can only have 1-5 options in an Overflow Menu"),
-  );
-  assertEquals(
-    result2,
-    new Error("Can only have 1-5 options in an Overflow Menu"),
-  );
 });
 
 Deno.test("makePlainTextInputElement makes a Plain Text Input Element", () => {
@@ -475,31 +329,6 @@ Deno.test("makeSingleStaticSelectElement makes a Static Single-Select Element", 
   assertEquals(result2, expected2);
 });
 
-Deno.test("makeSingleStaticSelectElement throws an Error if both options and option_groups are provided, or neither", () => {
-  let result1 = new Error("");
-  let result2 = new Error("");
-  try {
-    makeSingleStaticSelectElement(
-      makeOptionObjectsArraySimple(["1", "2"]),
-      makeOptionGroupsArray([["label", makeOptionObjectsArraySimple(["1"])]]),
-    );
-  } catch (e) {
-    if (e instanceof Error) {
-      result1 = e;
-    }
-  }
-  try {
-    makeSingleStaticSelectElement();
-  } catch (e) {
-    if (e instanceof Error) {
-      result2 = e;
-    }
-  }
-
-  assertEquals(result1, new Error("Only use options OR option groups"));
-  assertEquals(result2, new Error("Must use options OR option groups"));
-});
-
 Deno.test("makeSingleUserSelectElement makes a User Single-Select Element", () => {
   const result = makeSingleUserSelectElement("id");
   const expected: IUsersSelectElement = {
@@ -518,37 +347,6 @@ Deno.test("makeTimePickerElement makes a Time Picker Element", () => {
   };
 
   assertEquals(result, expected);
-});
-
-Deno.test("makeTimePickerElement throws an Error if the initial value isn't properly formatted", () => {
-  let result1 = new Error("");
-  let result2 = new Error("");
-  let result3 = new Error("");
-  try {
-    makeTimePickerElement("id", undefined, "100:3000");
-  } catch (e) {
-    if (e instanceof Error) {
-      result1 = e;
-    }
-  }
-  try {
-    makeTimePickerElement("id", undefined, "10 30");
-  } catch (e) {
-    if (e instanceof Error) {
-      result2 = e;
-    }
-  }
-  try {
-    makeTimePickerElement("id", undefined, "ten02");
-  } catch (e) {
-    if (e instanceof Error) {
-      result3 = e;
-    }
-  }
-  const expected = new Error("Format initial time as HH:mm");
-  assertEquals(result1, expected);
-  assertEquals(result2, expected);
-  assertEquals(result3, expected);
 });
 
 Deno.test("makeURLInputElement makes a URL Input Element", () => {

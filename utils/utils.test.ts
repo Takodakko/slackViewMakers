@@ -1,6 +1,6 @@
 import { IPlainTextObject } from "customTypes/custom_types.ts";
 import { removeUnneededKeys, textObjectOrUndefined } from "./utils.ts";
-import { assertEquals } from "std/assert/mod.ts";
+import {assertEquals} from "jsr:@std/assert";
 
 Deno.test("removeUnneededKeys removes properties with value undefined from objects", () => {
   const result = { a: 1, b: undefined };

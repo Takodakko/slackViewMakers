@@ -1,4 +1,4 @@
-import { assertEquals } from "std/assert/assert_equals.ts";
+import {assertEquals} from "jsr:@std/assert";
 import { makeModal } from "./view_makers.ts";
 import { makeDividerBlock } from "blockMakers/block_makers.ts";
 import { ISlackModal } from "customTypes/custom_types.ts";

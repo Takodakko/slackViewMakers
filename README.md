@@ -14,4 +14,4 @@ Functions for making the JSON for views are broken into Blocks, Views (only moda
 
 # Typings
 
-`/custom_types/` contains a file with the different types of view typings. You may notice, `block_id` is required in Block types, even though the Slack documentation says (accurately) that it is an optional property. This is because I extended the Slack `BlockElement` type when making the Block types, and `BlockElement` has `block_id` set to be required.
+`/custom_types/` contains a file with the different types of view typings. 

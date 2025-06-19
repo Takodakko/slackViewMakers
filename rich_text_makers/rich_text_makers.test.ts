@@ -1,4 +1,4 @@
-import { assertEquals } from "std/assert/assert_equals.ts";
+import {assertEquals} from "jsr:@std/assert";
 import {
   makeRichTextBroadcast,
   makeRichTextChannel,
