@@ -1,4 +1,4 @@
-import { allBlockTypes, ISlackModal } from "customTypes/custom_types.ts";
+import type { allBlockTypes, ISlackModal } from "customTypes/custom_types.ts";
 import { makePlainTextObject } from "objectMakers/object_makers.ts";
 import { removeUnneededKeys, textObjectOrUndefined } from "utils/utils.ts";
 

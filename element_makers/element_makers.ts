@@ -1,4 +1,4 @@
-import {
+import type {
   buttonStyles,
   IButtonElement,
   IChannelsSelectElement,

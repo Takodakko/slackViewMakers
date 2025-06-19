@@ -1,7 +1,7 @@
 import {assertEquals} from "jsr:@std/assert";
 import { makeModal } from "./view_makers.ts";
 import { makeDividerBlock } from "blockMakers/block_makers.ts";
-import { ISlackModal } from "customTypes/custom_types.ts";
+import type { ISlackModal } from "customTypes/custom_types.ts";
 
 Deno.test("makeModal makes a Slack modal", () => {
   const blocks = makeDividerBlock("id");

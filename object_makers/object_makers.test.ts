@@ -11,7 +11,7 @@ import {
   makeSingleOptionGroup,
   makeSingleOptionObject,
 } from "./object_makers.ts";
-import {
+import type {
   IConfirmObject,
   IConversationFilterObject,
   IDispatchActionConfigObject,

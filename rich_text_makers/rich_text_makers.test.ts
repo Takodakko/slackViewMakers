@@ -11,7 +11,7 @@ import {
   makeRichTextUser,
   makeRichTextUsergroup,
 } from "./rich_text_makers.ts";
-import {
+import type {
   IRichTextElementBroadcast,
   IRichTextElementChannel,
   IRichTextElementColor,
