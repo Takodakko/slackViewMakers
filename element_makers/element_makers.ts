@@ -45,7 +45,7 @@ export const makeButtonElement = (
   url?: string,
   confirm?: IConfirmObject,
   access?: string,
-) => {
+): IButtonElement => {
   const button: IButtonElement = {
     type: "button",
     style: style,
@@ -68,7 +68,7 @@ export const makeChannelsSelectElement = (
   confirm?: IConfirmObject,
   resp?: boolean,
   focus?: boolean,
-) => {
+): IChannelsSelectElement => {
   const chan: IChannelsSelectElement = {
     type: "channels_select",
     action_id: id,
@@ -89,7 +89,7 @@ export const makeCheckboxesElement = (
   init?: IOptionObject[],
   confirm?: IConfirmObject,
   focus?: boolean,
-) => {
+): ICheckboxesElement => {
   
   const check: ICheckboxesElement = {
     type: "checkboxes",
@@ -113,7 +113,7 @@ export const makeConversationsSelectElement = (
   resp?: boolean,
   filter?: IFilterObject,
   focus?: boolean,
-) => {
+): IConversationsSelectElement => {
   const conv: IConversationsSelectElement = {
     type: "conversations_select",
     action_id: id,
@@ -136,7 +136,7 @@ export const makeDatePickerElement = (
   init?: string,
   confirm?: IConfirmObject,
   focus?: boolean,
-) => {
+): IDatePickerElement => {
   
   const datepick: IDatePickerElement = {
     type: "datepicker",
@@ -156,7 +156,7 @@ export const makeDateTimePickerElement = (
   init?: number,
   confirm?: IConfirmObject,
   focus?: boolean,
-) => {
+): IDateTimePickerElement => {
   
   const dateTime: IDateTimePickerElement = {
     type: "datetimepicker",
@@ -176,7 +176,7 @@ export const makeEmailInputElement = (
   init?: string,
   disp?: IDispatchActionConfigObject,
   focus?: boolean,
-) => {
+): IEmailTextInputElement => {
   const email: IEmailTextInputElement = {
     type: "email_text_input",
     action_id: id,
@@ -197,7 +197,7 @@ export const makeExternalSelectElement = (
   min?: number,
   confirm?: IConfirmObject,
   focus?: boolean,
-) => {
+): IExternalSelectElement => {
   const exter: IExternalSelectElement = {
     type: "external_select",
     action_id: id,
@@ -216,7 +216,7 @@ export const makeFileInputElement = (
   id?: string,
   types?: string[],
   max?: number,
-) => {
+): IFileInputElement => {
   const file: IFileInputElement = {
     type: "file_input",
     action_id: id,
@@ -232,7 +232,7 @@ export const makeImageElement = (
   alt: string,
   url?: string,
   file?: IFileObject,
-) => {
+): IImageElement => {
   const image: IImageElement = {
     type: "image",
     alt_text: alt,
@@ -251,7 +251,7 @@ export const makeMultiChannelSelectElement = (
   confirm?: IConfirmObject,
   max?: number,
   focus?: boolean,
-) => {
+): IMultiChannelsSelectElement => {
   const chan: IMultiChannelsSelectElement = {
     type: "multi_channels_select",
     action_id: id,
@@ -275,7 +275,7 @@ export const makeMultiConversationsSelectElement = (
   max?: number,
   filter?: IFilterObject,
   focus?: boolean,
-) => {
+): IMultiConversationsSelectElement => {
   const conv: IMultiConversationsSelectElement = {
     type: "multi_conversations_select",
     action_id: id,
@@ -300,7 +300,7 @@ export const makeMultiExternalSelectElement = (
   confirm?: IConfirmObject,
   max?: number,
   focus?: boolean,
-) => {
+): IMultiExternalSelectElement => {
   const exter: IMultiExternalSelectElement = {
     type: "multi_external_select",
     action_id: id,
@@ -325,7 +325,7 @@ export const makeMultiStaticSelectElement = (
   confirm?: IConfirmObject,
   max?: number,
   focus?: boolean,
-) => {
+): IMultiStaticSelectElement => {
   
   const select: IMultiStaticSelectElement = {
     type: "multi_static_select",
@@ -350,7 +350,7 @@ export const makeMultiUserSelectElement = (
   confirm?: IConfirmObject,
   max?: number,
   focus?: boolean,
-) => {
+): IMultiUsersSelectElement => {
   const multi: IMultiUsersSelectElement = {
     type: "multi_users_select",
     action_id: id,
@@ -374,7 +374,7 @@ export const makeNumberInputElement = (
   max?: string,
   disp?: IDispatchActionConfigObject,
   focus?: boolean,
-) => {
+): INumberInputElement => {
   
   const numberInput: INumberInputElement = {
     type: "number_input",
@@ -396,7 +396,7 @@ export const makeOverflowElement = (
   options: IOptionObject[],
   id?: string,
   confirm?: IConfirmObject,
-) => {
+): IOverflowElement => {
   
   const overflow: IOverflowElement = {
     type: "overflow",
@@ -418,7 +418,7 @@ export const makePlainTextInputElement = (
   max?: number,
   disp?: IDispatchActionConfigObject,
   focus?: boolean,
-) => {
+): IPlainTextInputElement => {
   const plain: IPlainTextInputElement = {
     type: "plain_text_input",
     action_id: id,
@@ -441,7 +441,7 @@ export const makeRadioButtonsElement = (
   init?: IOptionObject,
   confirm?: IConfirmObject,
   focus?: boolean,
-) => {
+): IRadioButtonsElement => {
   const radio: IRadioButtonsElement = {
     type: "radio_buttons",
     options: options,
@@ -461,7 +461,7 @@ export const makeRichTextInputElement = (
   init?: IRichTextBlock,
   dispatch?: IDispatchActionConfigObject,
   focus?: boolean,
-) => {
+): IRichTextInputElement => {
   const rich: IRichTextInputElement = {
     type: "rich_text_input",
     action_id: id,
@@ -483,7 +483,7 @@ export const makeSingleStaticSelectElement = (
   placeholder?: string,
   confirm?: IConfirmObject,
   focus?: boolean,
-) => {
+): IStaticSelectElement => {
   
   const staticSelect: IStaticSelectElement = {
     type: "static_select",
@@ -506,7 +506,7 @@ export const makeSingleUserSelectElement = (
   init?: string,
   confirm?: IConfirmObject,
   focus?: boolean,
-) => {
+): IUsersSelectElement => {
   const userSelect: IUsersSelectElement = {
     type: "users_select",
     action_id: id,
@@ -527,7 +527,7 @@ export const makeTimePickerElement = (
   confirm?: IConfirmObject,
   focus?: boolean,
   timezone?: string,
-) => {
+): ITimePickerElement => {
   
   const time: ITimePickerElement = {
     type: "timepicker",
@@ -549,7 +549,7 @@ export const makeURLInputElement = (
   init?: string,
   disp?: IDispatchActionConfigObject,
   focus?: boolean,
-) => {
+): IURLTextInputElement => {
   const url: IURLTextInputElement = {
     type: "url_text_input",
     action_id: id,
@@ -569,7 +569,7 @@ export const makeWorkflowButtonElement = (
   url: string,
   style?: buttonStyles,
   access?: string,
-) => {
+): IWorkflowButtonElement => {
   const button: IWorkflowButtonElement = {
     type: "workflow_button",
     action_id: id,

@@ -1,4 +1,4 @@
-import {
+import type {
   allRichTextElementTypes,
   IRichTextElementBroadcast,
   IRichTextElementChannel,
@@ -17,7 +17,7 @@ import { removeUnneededKeys } from "utils/utils.ts";
 /** Makes Rich Text Broadcast */
 export const makeRichTextBroadcast = (
   range: "here" | "channel" | "everyone",
-) => {
+): IRichTextElementBroadcast => {
   const rich: IRichTextElementBroadcast = {
     type: "broadcast",
     range: range,
@@ -34,7 +34,7 @@ export const makeRichTextChannel = (
     | "highlight"
     | "client_highlight"
     | "unlink",
-) => {
+): IRichTextElementChannel => {
   const rich: IRichTextElementChannel = {
     type: "channel",
     channel_id: id,
@@ -45,7 +45,7 @@ export const makeRichTextChannel = (
 };
 
 /** Makes Rich Text Color */
-export const makeRichTextColor = (val: string) => {
+export const makeRichTextColor = (val: string): IRichTextElementColor => {
   const rich: IRichTextElementColor = {
     type: "color",
     value: val,
@@ -59,7 +59,7 @@ export const makeRichTextDate = (
   format: string,
   url?: string,
   fallback?: string,
-) => {
+): IRichTextElementDate => {
   const rich: IRichTextElementDate = {
     type: "date",
     timestamp: timestamp,
@@ -72,7 +72,7 @@ export const makeRichTextDate = (
 };
 
 /** Makes Rich Text Emoji */
-export const makeRichTextEmoji = (name: string, unicode?: string) => {
+export const makeRichTextEmoji = (name: string, unicode?: string): IRichTextElementEmoji => {
   const rich: IRichTextElementEmoji = {
     type: "emoji",
     name: name,
@@ -93,7 +93,7 @@ export const makeRichTextLink = (
     strike?: boolean;
     code?: boolean;
   },
-) => {
+): IRichTextElementLink => {
   const rich: IRichTextElementLink = {
     type: "link",
     url: url,
@@ -115,7 +115,7 @@ export const makeRichTextList = (
   indent?: number,
   offset?: number,
   border?: number,
-) => {
+): IRichTextList => {
   const rich: IRichTextList = {
     type: "rich_text_list",
     style: style,
@@ -129,7 +129,7 @@ export const makeRichTextList = (
 };
 
 /** Make Rich Text Section */
-export const makeRichTextSection = (elements: allRichTextElementTypes[]) => {
+export const makeRichTextSection = (elements: allRichTextElementTypes[]): IRichTextSection => {
   const rich: IRichTextSection = {
     type: "rich_text_section",
     elements: elements,
@@ -146,7 +146,7 @@ export const makeRichTextText = (
     strike?: boolean;
     code?: boolean;
   },
-) => {
+): IRichTextElementText => {
   const rich: IRichTextElementText = {
     type: "text",
     text: text,
@@ -167,7 +167,7 @@ export const makeRichTextUser = (
     strike?: boolean;
     code?: boolean;
   },
-) => {
+): IRichTextElementUser => {
   const rich: IRichTextElementUser = {
     type: "user",
     user_id: id,
@@ -190,7 +190,7 @@ export const makeRichTextUsergroup = (
     client_highlight?: boolean;
     unlink?: boolean;
   },
-) => {
+): IRichTextElementUsergroup => {
   const rich: IRichTextElementUsergroup = {
     type: "usergroup",
     usergroup_id: id,

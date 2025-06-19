@@ -14,7 +14,7 @@ export const makeModal = (
   notify?: boolean,
   exid?: string,
   noSubmit?: boolean,
-) => {
+): ISlackModal => {
   const modal: ISlackModal = {
     type: "modal",
     title: makePlainTextObject(title),

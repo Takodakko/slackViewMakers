@@ -28,7 +28,7 @@ import { removeUnneededKeys, textObjectOrUndefined } from "utils/utils.ts";
 export const makeActionsBlock = (
   elements: Array<allActionsElements>,
   id?: string,
-) => {
+): IActionsBlock => {
   const block: IActionsBlock = {
     type: "actions",
     block_id: id,
@@ -42,7 +42,7 @@ export const makeActionsBlock = (
 export const makeContextBlock = (
   elements: allContextElements[],
   id?: string,
-) => {
+): IContextBlock => {
   const block: IContextBlock = {
     type: "context",
     block_id: id,
@@ -53,7 +53,7 @@ export const makeContextBlock = (
 };
 
 /** Make a Divider Block */
-export const makeDividerBlock = (id?: string) => {
+export const makeDividerBlock = (id?: string): IDividerBlock => {
   const block: IDividerBlock = {
     type: "divider",
     block_id: id,
@@ -63,7 +63,7 @@ export const makeDividerBlock = (id?: string) => {
 };
 
 /** Make a File Block */
-export const makeFileBlock = (ex_id: string, source: string, id?: string) => {
+export const makeFileBlock = (ex_id: string, source: string, id?: string): IFileBlock => {
   const block: IFileBlock = {
     type: "file",
     block_id: id,
@@ -75,7 +75,7 @@ export const makeFileBlock = (ex_id: string, source: string, id?: string) => {
 };
 
 /** Make a Header Block */
-export const makeHeaderBlock = (text: string, id?: string) => {
+export const makeHeaderBlock = (text: string, id?: string): IHeaderBlock => {
   const block: IHeaderBlock = {
     type: "header",
     block_id: id,
@@ -86,7 +86,7 @@ export const makeHeaderBlock = (text: string, id?: string) => {
 };
 
 /** Make an Image Block */
-export const makeImageBlock = (alt: string, id?: string, url?: string, file?: IFileObject, title?: string) => {
+export const makeImageBlock = (alt: string, id?: string, url?: string, file?: IFileObject, title?: string): IImageBlock => {
   const block: IImageBlock = {
     type: "image",
     alt_text: alt,
@@ -107,7 +107,7 @@ export const makeInputBlock = (
   optional?: boolean,
   disp?: boolean,
   hint?: string,
-) => {
+): IInputBlock => {
   const block: IInputBlock = {
     type: "input",
     block_id: id,
@@ -122,7 +122,7 @@ export const makeInputBlock = (
 };
 
 /** Make a Markdown Block */
-export const makeMarkdownBlock = (text: string, id?: string) => {
+export const makeMarkdownBlock = (text: string, id?: string): IMarkdownBlock => {
   const block: IMarkdownBlock = {
     type: "markdown",
     block_id: id,
@@ -136,7 +136,7 @@ export const makeMarkdownBlock = (text: string, id?: string) => {
 export const makeRichTextBlock = (
   elements: allRichTextBlockElements[],
   id?: string
-) => {
+): IRichTextBlock => {
   const block: IRichTextBlock = {
     type: "rich_text",
     block_id: id,
@@ -154,7 +154,7 @@ export const makeSectionBlock = (
   fields?: Array<ITextObject>,
   accessory?: allSectionElements,
   expand?: boolean,
-) => {
+): ISectionBlock => {
   let textObj: ITextObject | undefined = undefined;
   if (text && textType === "plain_text") {
     textObj = makePlainTextObject(text);
@@ -175,7 +175,7 @@ export const makeSectionBlock = (
 };
 
 /** Make a Video Block */
-export const makeVideoBlock = (alt: string, author?: string, id?: string, descr?: string, icon?: string, provider_name?: string, title?: string, title_url?: string, thumb?: string, video_url?: string) => {
+export const makeVideoBlock = (alt: string, author?: string, id?: string, descr?: string, icon?: string, provider_name?: string, title?: string, title_url?: string, thumb?: string, video_url?: string): IVideoBlock => {
   const block: IVideoBlock = {
     type: "video",
     alt_text: alt,
